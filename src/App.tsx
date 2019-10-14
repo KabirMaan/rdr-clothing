@@ -1,9 +1,14 @@
 import React from "react";
 
 import "./App.scss";
+import Home from "./pages/Home";
 
 const App: React.FC = () => {
-  return <div className="App">App</div>;
+  return (
+    <div className="App">
+      <Home></Home>
+    </div>
+  );
 };
 
 export default App;
