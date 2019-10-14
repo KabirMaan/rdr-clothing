@@ -1,16 +1,30 @@
 import React from "react";
 import "./MenuItem.scss";
+import classNames from "classnames";
 
 interface MenuItemProps {
   menuTitle: string;
+  imageUrl: string;
   menuSubTitle?: string;
+  size: string;
 }
-const MenuItem = (props: MenuItemProps): JSX.Element => {
+const MenuItem = ({
+  menuTitle,
+  menuSubTitle,
+  imageUrl,
+  size
+}: MenuItemProps): JSX.Element => {
   return (
-    <div className="menu-item">
+    <div
+      style={{ backgroundImage: `url(${imageUrl})` }}
+      className={classNames({
+        "menu-item": true,
+        [`menu-item__${size}`]: size
+      })}
+    >
       <div className="menu-item__content">
-        <div className="menu-item__title">{props.menuTitle}</div>
-        <div className="menu-item__subtitle">{props.menuSubTitle}</div>
+        <h1 className="menu-item__title">{menuTitle}</h1>
+        <span className="menu-item__subtitle">{menuSubTitle}</span>
       </div>
     </div>
   );
