@@ -16,14 +16,17 @@ const MenuItem = ({
 }: MenuItemProps): JSX.Element => {
   return (
     <div
-      style={{ backgroundImage: `url(${imageUrl})` }}
       className={classNames({
         "menu-item": true,
         [`menu-item__${size}`]: size
       })}
     >
+      <div
+        className="menu-item__image"
+        style={{ backgroundImage: `url(${imageUrl})` }}
+      ></div>
       <div className="menu-item__content">
-        <h1 className="menu-item__title">{menuTitle}</h1>
+        <h1 className="menu-item__title">{menuTitle.toUpperCase()}</h1>
         <span className="menu-item__subtitle">{menuSubTitle}</span>
       </div>
     </div>
