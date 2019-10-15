@@ -6,20 +6,23 @@ interface MenuItemProps {
   menuTitle: string;
   imageUrl: string;
   menuSubTitle?: string;
-  size: string;
+  size?: string;
+  onMenuItemClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
-const MenuItem = ({
+const MenuItem: React.FC<MenuItemProps> = ({
   menuTitle,
   menuSubTitle,
   imageUrl,
-  size
-}: MenuItemProps): JSX.Element => {
+  size,
+  onMenuItemClick
+}): JSX.Element => {
   return (
     <div
       className={classNames({
         "menu-item": true,
         [`menu-item__${size}`]: size
       })}
+      onClick={onMenuItemClick}
     >
       <div
         className="menu-item__image"

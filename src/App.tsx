@@ -1,12 +1,22 @@
 import React from "react";
+import Home from "./pages/Home";
+import { Route, Switch } from "react-router-dom";
 
 import "./App.scss";
-import Home from "./pages/Home";
+
+const Hats = () => (
+  <div>
+    <h1>Hats</h1>
+  </div>
+);
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Home></Home>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/hats" component={Hats} />
+      </Switch>
     </div>
   );
 };

@@ -23,5 +23,6 @@ storiesOf("Menu Item", module)
       menuTitle="Mens"
       imageUrl="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
       size="large"
+      onMenuItemClick={() => {}}
     ></MenuItem>
   ));
