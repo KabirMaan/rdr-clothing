@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import MenuItem from "../../components/MenuItem";
-import "./HomeContainer.scss";
+import MenuItem from "../MenuItem";
+import "./Categories.scss";
 import { withRouter, RouteComponentProps } from "react-router";
 
-interface HomeContainerProps extends RouteComponentProps {}
-interface HomeContainerState {
+interface CategoriesProps extends RouteComponentProps {}
+interface CategoriesState {
   menuItems: { title: string; imageUrl: string; id: number; linkUrl: string }[];
 }
 
-class HomeContainer extends Component<HomeContainerProps, HomeContainerState> {
+class Categories extends Component<CategoriesProps, CategoriesState> {
   state = {
     menuItems: [
       {
@@ -53,7 +53,7 @@ class HomeContainer extends Component<HomeContainerProps, HomeContainerState> {
   };
   render() {
     return (
-      <div className="home-container">
+      <div className="categories">
         {this.state.menuItems.map(({ title, imageUrl, id, size, linkUrl }) => {
           return (
             <MenuItem
@@ -70,4 +70,4 @@ class HomeContainer extends Component<HomeContainerProps, HomeContainerState> {
   }
 }
 
-export default withRouter(HomeContainer);
+export default withRouter(Categories);

@@ -1,6 +1,6 @@
-import { storiesOf } from "@storybook/react";
 import * as React from "react";
 import MenuItem from "./MenuItem";
+import { storiesOf } from "@storybook/react";
 
 const CenterDecorator = (storyFn: any) => (
   <div
@@ -9,7 +9,8 @@ const CenterDecorator = (storyFn: any) => (
       height: "500px",
       display: "flex",
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
+      fontFamily: "Open Sans Condensed"
     }}
   >
     <div style={{ width: "400px" }}>{storyFn()}</div>
