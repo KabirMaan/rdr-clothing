@@ -1,5 +1,5 @@
 module.exports = ({ config }) => {
-  config.module.rules.push({
+  config.module.rules.unshift({
     test: /\.(ts|tsx)$/,
     loaders: [
       require.resolve("awesome-typescript-loader"),

@@ -1,6 +1,6 @@
 import * as React from "react";
-import ProductPreview from "./ProductPreview";
 import { storiesOf } from "@storybook/react";
+import ProductPreview from "./ProductPreview";
 
 const CenterDecorator = (storyFn: any) => (
   <div

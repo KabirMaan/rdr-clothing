@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import "./CollectionPreviews.scss";
-import CollectionPreviewRow from "../CollectionPreviewRow";
+import React, { Component, lazy } from "react";
 import SHOP_DATA from "./shopData";
+import CollectionPreviewRow from "../CollectionPreviewRow";
+//const CollectionPreviewRow = lazy(() => import("../CollectionPreviewRow"));
+
+import "./CollectionPreviews.scss";
 
 interface CollectionPreviewsProps {}
 interface CollectionPreviewsState {
@@ -21,13 +23,10 @@ class CollectionPreviews extends Component<
     collections: SHOP_DATA
   };
   render() {
-    return (
-      <div>
-        {this.state.collections.map(collection => {
-          return <CollectionPreviewRow collection={collection} />;
-        })}
-      </div>
-    );
+    const collectionPreviews = this.state.collections.map(collection => {
+      return <CollectionPreviewRow collection={collection} />;
+    });
+    return <div>{collectionPreviews}</div>;
   }
 }
 

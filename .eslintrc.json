@@ -1,0 +1,5 @@
+// {
+//   "rules": {
+//     "import/first": ["warn", "DISABLE-absolute-first"]
+//   }
+// }
