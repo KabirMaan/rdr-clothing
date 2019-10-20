@@ -1,4 +1,4 @@
-import React, { Component, lazy } from "react";
+import React, { Component } from "react";
 import SHOP_DATA from "./shopData";
 import CollectionPreviewRow from "../CollectionPreviewRow";
 //const CollectionPreviewRow = lazy(() => import("../CollectionPreviewRow"));
