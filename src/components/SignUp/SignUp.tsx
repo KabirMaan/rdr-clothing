@@ -3,9 +3,9 @@ import React from "react";
 import FormInput from "../FormInput";
 import CustomButton from "../CustomButton";
 
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 
 import "./SignUp.scss";
+import { auth, createUserProfileDocument } from "../../utils/firebase";
 
 class SignUp extends React.Component {
   state = { displayName: "", email: "", password: "", confirmPassword: "" };

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { auth } from "../../firebase/firebase.utils";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import "./Header.scss";
-
+import { auth } from "../../utils/firebase";
+import { connect } from "react-redux";
 interface HeaderProps {
   currentUser: any;
 }
@@ -34,4 +34,8 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => (
   </div>
 );
 
-export default Header;
+const mapStateToProps = (state: any) => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);
