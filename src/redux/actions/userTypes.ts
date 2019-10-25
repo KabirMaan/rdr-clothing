@@ -1,3 +1,3 @@
-export const userTypes = {
-  SET_CURRENT_USER: "SET_CURRENT_USER"
-};
+export enum UserActionTypes {
+  "SET_CURRENT_USER"
+}

@@ -3,12 +3,12 @@ import React from "react";
 import FormInput from "../FormInput";
 import CustomButton from "../CustomButton";
 
-
 import "./SignUp.scss";
 import { auth, createUserProfileDocument } from "../../utils/firebase";
 
 class SignUp extends React.Component {
   state = { displayName: "", email: "", password: "", confirmPassword: "" };
+  _isMounted!: boolean;
 
   handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -27,13 +27,6 @@ class SignUp extends React.Component {
       );
 
       await createUserProfileDocument(user, { displayName });
-
-      this.setState({
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-      });
     } catch (error) {
       console.error(error);
     }
