@@ -12,9 +12,13 @@ import { currentUser } from "../../redux/actions";
 
 interface HeaderProps {
   currentUser: currentUser | null;
+  hidden: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ currentUser }): JSX.Element => {
+const Header: React.FC<HeaderProps> = ({
+  currentUser,
+  hidden
+}): JSX.Element => {
   console.log(currentUser);
   return (
     <div className="header">
@@ -39,13 +43,14 @@ const Header: React.FC<HeaderProps> = ({ currentUser }): JSX.Element => {
         )}
         <CartIcon />
       </div>
-      <CartPreview />
+      {hidden ? <CartPreview /> : null}
     </div>
   );
 };
 
 const mapStateToProps = (state: StoreState) => ({
-  currentUser: state.user.currentUser
+  currentUser: state.user.currentUser,
+  hidden: state.cart.hidden
 });
 
 export default connect(mapStateToProps)(Header);
