@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProductPreview.scss";
+import CustomButton from "../CustomButton";
 
 interface ProductPreviewProps {
   name: string;
@@ -24,6 +25,7 @@ const ProductPreview: React.FC<ProductPreviewProps> = ({
         <div className="product-preview__name">{name}</div>
         <div className="product-preview__price">{price}</div>
       </div>
+      <CustomButton invertedColors>Add To Cart</CustomButton>
     </div>
   );
 };

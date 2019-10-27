@@ -5,18 +5,21 @@ import "./CustomButton.scss";
 interface CustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isGoogleSignIn?: boolean;
+  invertedColors?: boolean;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
   children,
   isGoogleSignIn,
+  invertedColors,
   ...otherProps
 }) => (
   <button
     {...otherProps}
     className={classNames({
       "custom-button": true,
-      "google-sign-in": isGoogleSignIn
+      "google-sign-in": isGoogleSignIn,
+      "inverted-colors": invertedColors
     })}
   >
     {children}
