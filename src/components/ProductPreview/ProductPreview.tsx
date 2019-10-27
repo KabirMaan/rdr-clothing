@@ -12,7 +12,7 @@ interface ProductPreviewProps {
     price: number;
     imageUrl: string;
   };
-
+  key: number;
   addItem: typeof addItem;
 }
 

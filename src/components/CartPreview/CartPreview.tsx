@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import Product from "../Product";
 import { StoreState } from "../../redux/reducers";
 import { cartItem } from "../../redux/actions/cart/cartActions";
+import { createStructuredSelector } from "reselect";
+import { selectCartItems } from "../../redux/actions/cart/cartSelectors";
 
 interface CartPreviewProps {
   cartItems: cartItem[];
@@ -26,8 +28,7 @@ const CartPreview: React.FC<CartPreviewProps> = ({
   );
 };
 
-const mapStateToProps = (state: StoreState) => ({
-  cartItems: state.cart.cartItems
+const mapStateToProps = createStructuredSelector({
+  cartItems: selectCartItems
 });
-
 export default connect(mapStateToProps)(CartPreview);
