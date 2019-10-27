@@ -9,7 +9,7 @@ import "./App.scss";
 import { auth, createUserProfileDocument } from "./utils/firebase";
 import { User } from "firebase";
 import { connect } from "react-redux";
-import { setCurrentUser, currentUser } from "./redux/actions/userActions";
+import { setCurrentUser, currentUser } from "./redux/actions/user/userActions";
 import { StoreState } from "./redux/reducers";
 import { Dispatch } from "redux";
 
@@ -18,9 +18,6 @@ interface AppProps {
   currentUser: currentUser | null;
 }
 class App extends React.Component<AppProps> {
-  state = {
-    currentUser: null
-  };
   unsubscribeFromAuth: any;
 
   componentDidMount() {
@@ -58,7 +55,7 @@ class App extends React.Component<AppProps> {
   render() {
     return (
       <div className="App">
-        <Header currentUser={this.props.currentUser} />
+        <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
@@ -79,9 +76,7 @@ class App extends React.Component<AppProps> {
   }
 }
 
-const mapStateToProps = (
-  state: StoreState
-): { currentUser: currentUser | null } => {
+const mapStateToProps = (state: StoreState) => {
   return {
     currentUser: state.user.currentUser
   };

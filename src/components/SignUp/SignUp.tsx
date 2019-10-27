@@ -6,7 +6,16 @@ import CustomButton from "../CustomButton";
 import "./SignUp.scss";
 import { auth, createUserProfileDocument } from "../../utils/firebase";
 
-class SignUp extends React.Component {
+interface SignUpProps {}
+
+interface SignUpState {
+  displayName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+class SignUp extends React.Component<SignUpProps, SignUpState> {
   state = { displayName: "", email: "", password: "", confirmPassword: "" };
   _isMounted!: boolean;
 
@@ -34,8 +43,8 @@ class SignUp extends React.Component {
 
   handleChange = (event: any) => {
     const { name, value } = event.target;
-
-    this.setState({ [name]: value });
+    const newState = { [name]: value } as Pick<SignUpProps, keyof SignUpProps>;
+    this.setState(newState);
   };
 
   render() {

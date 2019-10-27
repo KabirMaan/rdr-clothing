@@ -2,9 +2,17 @@ import React from "react";
 import classNames from "classnames";
 import "./CustomButton.scss";
 
-const CustomButton = ({ children, isGoogleSignIn, ...otherProps }: any) => (
+interface CustomButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  isGoogleSignIn?: boolean;
+}
+
+const CustomButton: React.FC<CustomButtonProps> = ({
+  children,
+  isGoogleSignIn,
+  ...otherProps
+}) => (
   <button
-    // className="custom-button"
     {...otherProps}
     className={classNames({
       "custom-button": true,
@@ -14,5 +22,9 @@ const CustomButton = ({ children, isGoogleSignIn, ...otherProps }: any) => (
     {children}
   </button>
 );
+
+CustomButton.defaultProps = {
+  type: "button"
+};
 
 export default CustomButton;

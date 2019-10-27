@@ -2,10 +2,18 @@ import React from "react";
 import "./CollectionPreviewRow.scss";
 import ProductPreview from "../ProductPreview";
 
+interface CollectionPreviewRowProps {
+  collection: {
+    id: number;
+    title: string;
+    routeName: string;
+    items: { id: number; name: string; imageUrl: string; price: number }[];
+  };
+}
+
 const CollectionPreviewRow: React.FC<CollectionPreviewRowProps> = ({
   collection
 }): JSX.Element => {
-  /* eslint-disable import/first */
   const filteredItems = collection.items
     .filter((_, idx) => idx < 4)
     .map((item, id) => <ProductPreview key={id} {...item} />);
@@ -18,14 +26,5 @@ const CollectionPreviewRow: React.FC<CollectionPreviewRowProps> = ({
     </div>
   );
 };
-
-interface CollectionPreviewRowProps {
-  collection: {
-    id: number;
-    title: string;
-    routeName: string;
-    items: { id: number; name: string; imageUrl: string; price: number }[];
-  };
-}
 
 export default CollectionPreviewRow;

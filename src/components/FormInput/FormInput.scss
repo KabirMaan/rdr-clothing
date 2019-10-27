@@ -7,11 +7,11 @@ $main-color: black;
   color: $main-color;
 }
 
-.group {
+.form-input {
   position: relative;
   margin: 45px 0;
 
-  .form-input {
+  &__handler {
     background: none;
     background-color: white;
     color: $sub-color;
@@ -37,7 +37,7 @@ $main-color: black;
     letter-spacing: 0.3em;
   }
 
-  .form-input-label {
+  &__label {
     color: $sub-color;
     font-size: 16px;
     font-weight: normal;

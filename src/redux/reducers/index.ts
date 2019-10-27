@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import userReducer from "./userReducer";
-import { currentUser } from "../actions/userActions";
+import { currentUser } from "../actions/user/userActions";
 
 export interface StoreState {
   user: {

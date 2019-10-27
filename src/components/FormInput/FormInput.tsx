@@ -17,16 +17,16 @@ const FormInput: React.FC<FormInputProps> = ({
   name
 }) => {
   return (
-    <div className="group">
+    <div className="form-input">
       <input
-        className="form-input"
+        className="form-input__handler"
         onChange={handleChange}
         name={name}
         required={required}
         value={value}
       />
       {label && (
-        <label className={`${value.length ? "shrink" : ""} form-input-label`}>
+        <label className={`${value.length ? "shrink" : ""} form-input__label`}>
           {label}
         </label>
       )}

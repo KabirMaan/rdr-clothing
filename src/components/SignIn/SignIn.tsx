@@ -4,8 +4,14 @@ import "./SignIn.scss";
 import CustomButton from "../CustomButton";
 import { auth, signInWithGoogle } from "../../utils/firebase";
 
+interface SignInProps {}
 
-class SignIn extends React.Component {
+interface SignInState {
+  email: string;
+  password: string;
+}
+
+class SignIn extends React.Component<SignInProps, SignInState> {
   state = {
     email: "",
     password: ""
@@ -30,8 +36,9 @@ class SignIn extends React.Component {
 
   handleChange = (event: any) => {
     const { value, name } = event.target;
+    const newState = { [name]: value } as Pick<SignInProps, keyof SignInProps>;
 
-    this.setState({ [name]: value });
+    this.setState(newState);
   };
 
   render() {

@@ -48,7 +48,7 @@ class Categories extends Component<CategoriesProps, CategoriesState> {
       }
     ]
   };
-  onMenuItemClick = (linkUrl: string) => {
+  onMenuItemClick = (linkUrl: string): void => {
     this.props.history.push(`${this.props.match.url}${linkUrl}`);
   };
   render() {

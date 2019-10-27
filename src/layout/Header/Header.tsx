@@ -4,13 +4,17 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import "./Header.scss";
 import { auth } from "../../utils/firebase";
-// import { connect } from "react-redux";
-// import { currentUser } from "../../redux/actions";
+import CartIcon from "../../components/CartIcon";
+import CartPreview from "../../components/CartPreview";
+import { connect } from "react-redux";
+import { StoreState } from "../../redux/reducers";
+import { currentUser } from "../../redux/actions";
+
 interface HeaderProps {
-  currentUser: any;
+  currentUser: currentUser | null;
 }
 
-const Header: React.FC<HeaderProps> = ({ currentUser }) => {
+const Header: React.FC<HeaderProps> = ({ currentUser }): JSX.Element => {
   console.log(currentUser);
   return (
     <div className="header">
@@ -33,13 +37,15 @@ const Header: React.FC<HeaderProps> = ({ currentUser }) => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+      <CartPreview />
     </div>
   );
 };
 
-// const mapStateToProps = (state: any) => ({
-//   currentUser: state.user.currentUser
-// });
+const mapStateToProps = (state: StoreState) => ({
+  currentUser: state.user.currentUser
+});
 
-export default Header;
+export default connect(mapStateToProps)(Header);

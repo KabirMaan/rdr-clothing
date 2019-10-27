@@ -11,7 +11,7 @@ const ProductPreview: React.FC<ProductPreviewProps> = ({
   name,
   price,
   imageUrl
-}) => {
+}): JSX.Element => {
   return (
     <div className="product-preview">
       <div
