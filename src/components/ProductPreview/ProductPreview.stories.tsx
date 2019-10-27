@@ -21,8 +21,11 @@ storiesOf("Product Preview", module)
   .addDecorator(CenterDecorator)
   .add("with name, image and price", () => (
     <ProductPreview
-      name="Brown Brim"
-      imageUrl="https://i.ibb.co/ZYW3VTp/brown-brim.png"
-      price={25}
+      item={{
+        id: 2,
+        name: "Brown Brim",
+        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+        price: 25
+      }}
     ></ProductPreview>
   ));

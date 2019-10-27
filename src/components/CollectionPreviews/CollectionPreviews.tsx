@@ -23,8 +23,8 @@ class CollectionPreviews extends Component<
     collections: SHOP_DATA
   };
   render() {
-    const collectionPreviews = this.state.collections.map(collection => {
-      return <CollectionPreviewRow collection={collection} />;
+    const collectionPreviews = this.state.collections.map((collection, id) => {
+      return <CollectionPreviewRow id={id} collection={collection} />;
     });
     return <div>{collectionPreviews}</div>;
   }

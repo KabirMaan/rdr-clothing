@@ -3,6 +3,7 @@ import "./CollectionPreviewRow.scss";
 import ProductPreview from "../ProductPreview";
 
 interface CollectionPreviewRowProps {
+  id: number;
   collection: {
     id: number;
     title: string;
@@ -16,7 +17,7 @@ const CollectionPreviewRow: React.FC<CollectionPreviewRowProps> = ({
 }): JSX.Element => {
   const filteredItems = collection.items
     .filter((_, idx) => idx < 4)
-    .map((item, id) => <ProductPreview key={id} {...item} />);
+    .map(item => <ProductPreview key={item.id} item={item} />);
   return (
     <div className="collection-preview-row">
       <h1 className="collection-preview-row__title">

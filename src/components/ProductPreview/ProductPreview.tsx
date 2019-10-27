@@ -1,18 +1,26 @@
 import React from "react";
 import "./ProductPreview.scss";
 import CustomButton from "../CustomButton";
+import { Dispatch } from "redux";
+import { addItem } from "../../redux/actions/cart/cartActions";
+import { connect } from "react-redux";
 
 interface ProductPreviewProps {
-  name: string;
-  price: number;
-  imageUrl: string;
+  item: {
+    id: number;
+    name: string;
+    price: number;
+    imageUrl: string;
+  };
+
+  addItem: typeof addItem;
 }
 
 const ProductPreview: React.FC<ProductPreviewProps> = ({
-  name,
-  price,
-  imageUrl
+  item,
+  addItem
 }): JSX.Element => {
+  const { imageUrl, name, price } = item;
   return (
     <div className="product-preview">
       <div
@@ -25,9 +33,17 @@ const ProductPreview: React.FC<ProductPreviewProps> = ({
         <div className="product-preview__name">{name}</div>
         <div className="product-preview__price">{price}</div>
       </div>
-      <CustomButton invertedColors>Add To Cart</CustomButton>
+      <CustomButton onClick={() => addItem(item)} invertedColors>
+        Add To Cart
+      </CustomButton>
     </div>
   );
 };
 
-export default ProductPreview;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  addItem: (item: any) => dispatch(addItem(item))
+});
+export default connect(
+  null,
+  mapDispatchToProps
+)(ProductPreview);
