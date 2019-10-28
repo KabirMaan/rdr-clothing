@@ -6,6 +6,9 @@ import { currentUser } from "../actions/user/userActions";
 import cartReducer from "./cartReducer";
 import { cartItem } from "../actions/cart/cartActions";
 
+import directoryReducer from "./directoryReducer";
+import shopReducer from "./shopReducer";
+
 export interface StoreState {
   user: {
     currentUser: currentUser | null;
@@ -14,6 +17,8 @@ export interface StoreState {
     hidden: boolean;
     cartItems: cartItem[];
   };
+  directory: any;
+  shop: any;
 }
 
 const persistConfig = {
@@ -24,7 +29,9 @@ const persistConfig = {
 
 const rootReducer = combineReducers<StoreState>({
   user: userReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  directory: directoryReducer,
+  shop: shopReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

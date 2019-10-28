@@ -1,15 +1,15 @@
 import React from "react";
 import "./HomePage.scss";
-import Categories from "../../components/Categories";
+
+import Directory from "../../components/Directory";
 // import { RouteComponentProps } from "react-router";
 
 // interface HomePageProps extends RouteComponentProps {}
 
 const HomePage: React.FC = (): JSX.Element => {
-
   return (
     <div className="home-page">
-      <Categories />
+      <Directory />
     </div>
   );
 };
