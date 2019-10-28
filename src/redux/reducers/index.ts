@@ -1,4 +1,6 @@
 import { combineReducers } from "redux";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import userReducer from "./userReducer";
 import { currentUser } from "../actions/user/userActions";
 import cartReducer from "./cartReducer";
@@ -14,7 +16,15 @@ export interface StoreState {
   };
 }
 
-export default combineReducers<StoreState>({
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["cart"]
+};
+
+const rootReducer = combineReducers<StoreState>({
   user: userReducer,
   cart: cartReducer
 });
+
+export default persistReducer(persistConfig, rootReducer);
