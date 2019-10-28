@@ -9,6 +9,9 @@ import CartPreview from "../../components/CartPreview";
 import { connect } from "react-redux";
 import { StoreState } from "../../redux/reducers";
 import { currentUser } from "../../redux/actions";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "../../redux/actions/user/userSelectors";
+import { selectCartHidden } from "../../redux/actions/cart/cartSelectors";
 
 interface HeaderProps {
   currentUser: currentUser | null;
@@ -43,14 +46,14 @@ const Header: React.FC<HeaderProps> = ({
         )}
         <CartIcon />
       </div>
-      {hidden ? <CartPreview /> : null}
+      {!hidden ? <CartPreview /> : null}
     </div>
   );
 };
 
-const mapStateToProps = (state: StoreState) => ({
-  currentUser: state.user.currentUser,
-  hidden: state.cart.hidden
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
 });
 
 export default connect(mapStateToProps)(Header);

@@ -24,7 +24,7 @@ class CollectionPreviews extends Component<
   };
   render() {
     const collectionPreviews = this.state.collections.map((collection, id) => {
-      return <CollectionPreviewRow id={id} collection={collection} />;
+      return <CollectionPreviewRow key={id} collection={collection} />;
     });
     return <div>{collectionPreviews}</div>;
   }

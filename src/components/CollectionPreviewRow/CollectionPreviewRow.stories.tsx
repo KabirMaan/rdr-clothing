@@ -82,5 +82,5 @@ const collection = {
 storiesOf("Collection Preview Row", module)
   .addDecorator(CenterDecorator)
   .add("with menu title", () => (
-    <CollectionPreviewRow id={1} collection={collection}></CollectionPreviewRow>
+    <CollectionPreviewRow collection={collection}></CollectionPreviewRow>
   ));

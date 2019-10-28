@@ -3,7 +3,6 @@ import "./CollectionPreviewRow.scss";
 import ProductPreview from "../ProductPreview";
 
 interface CollectionPreviewRowProps {
-  id: number;
   collection: {
     id: number;
     title: string;

@@ -12,6 +12,9 @@ import { connect } from "react-redux";
 import { setCurrentUser, currentUser } from "./redux/actions/user/userActions";
 import { StoreState } from "./redux/reducers";
 import { Dispatch } from "redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/actions/user/userSelectors";
+import CheckoutPage from "./pages/CheckoutPage";
 
 interface AppProps {
   setCurrentUser: typeof setCurrentUser;
@@ -33,6 +36,8 @@ class App extends React.Component<AppProps> {
 
       if (userRef) {
         userRef.onSnapshot(snapShot => {
+          console.log(snapShot);
+          console.log(snapShot.data());
           const currentUser = {
             id: snapShot.id,
             email: snapShot.data()!.email,
@@ -59,6 +64,7 @@ class App extends React.Component<AppProps> {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
+          <Route path="/checkout" component={CheckoutPage} />
           <Route
             exact
             path="/login"
@@ -76,11 +82,9 @@ class App extends React.Component<AppProps> {
   }
 }
 
-const mapStateToProps = (state: StoreState) => {
-  return {
-    currentUser: state.user.currentUser
-  };
-};
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setCurrentUser: (user: currentUser | null) => dispatch(setCurrentUser(user))
