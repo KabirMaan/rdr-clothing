@@ -1,39 +1,22 @@
-import React, { Component } from "react";
-import SHOP_DATA from "./shopData";
-import CollectionPreviewRow from "../CollectionPreviewRow";
-//const CollectionPreviewRow = lazy(() => import("../CollectionPreviewRow"));
-
-import "./CollectionPreviews.scss";
+import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { selectCollections } from "../../redux/actions/shop/shopSelectors";
 
-interface CollectionPreviewsProps {
-  // collections: any;
-  collections: {
-    id: number;
-    title: string;
-    routeName: string;
-    items: { id: number; name: string; imageUrl: string; price: number }[];
-  }[];
-}
-interface CollectionPreviewsState {}
+import CollectionPreviewRow from "../CollectionPreviewRow";
 
-class CollectionPreviews extends Component<
-  CollectionPreviewsProps,
-  CollectionPreviewsState
-> {
-  
-  render() {
-    const collectionPreviews = this.props.collections.map((collection:any, id:any) => {
-      return <CollectionPreviewRow key={id} collection={collection} />;
-    });
-    return <div>{collectionPreviews}</div>;
-  }
-}
+import "./CollectionPreviews.scss";
+import { selectCollectionsForPreview } from "../../redux/actions/shop/shopSelectors";
+
+const CollectionPreviews = ({ collections }: any) => (
+  <div className="collections-overview">
+    {collections.map(({ id, ...otherCollectionProps }: any) => (
+      <CollectionPreviewRow key={id} {...otherCollectionProps} />
+    ))}
+  </div>
+);
 
 const mapStateToProps = createStructuredSelector({
-  collections: selectCollections
+  collections: selectCollectionsForPreview
 });
 
 export default connect(mapStateToProps)(CollectionPreviews);

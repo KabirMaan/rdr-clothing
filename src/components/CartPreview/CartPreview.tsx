@@ -3,7 +3,6 @@ import CustomButton from "../CustomButton";
 import "./CartPreview.scss";
 import { connect } from "react-redux";
 import Product from "../Product";
-import { StoreState } from "../../redux/reducers";
 import {
   cartItem,
   toggleCartHidden
