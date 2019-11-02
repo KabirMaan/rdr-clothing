@@ -17,7 +17,11 @@ export interface SetCurrentUserAction {
 
 export const setCurrentUser = (
   currentUser: currentUser | null
-): SetCurrentUserAction => ({
-  type: UserActionTypes.SET_CURRENT_USER,
-  payload: currentUser
-});
+): SetCurrentUserAction => {
+  console.log(UserActionTypes);
+  console.log(UserActionTypes.SET_CURRENT_USER);
+  return {
+    type: UserActionTypes.SET_CURRENT_USER,
+    payload: currentUser
+  };
+};
