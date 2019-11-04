@@ -4,16 +4,26 @@ import "./ShopPage.scss";
 import CollectionPreviews from "../../components/CollectionPreviews";
 import { RouteComponentProps, Route } from "react-router-dom";
 import CollectionPage from "../CollectionPage";
-import { convertCollectionsSnapshotToMap, firestore } from "../../utils/firebase";
+import {
+  convertCollectionsSnapshotToMap,
+  firestore
+} from "../../utils/firebase";
 import { Dispatch } from "redux";
 import { updateCollections } from "../../redux/actions/shop/shopActions";
 import { connect } from "react-redux";
+import WithSpinner from "../../components/WithSpinner";
 
+const CollectionPageWithSPinner = WithSpinner(CollectionPage);
+const CollectionPreviewsWithSpinner = WithSpinner(CollectionPreviews);
 interface ShopPageProps extends RouteComponentProps {
   updateCollections: any;
 }
 
 class ShopPage extends React.Component<ShopPageProps> {
+  state = {
+    loading: true
+  };
+
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
@@ -32,13 +42,22 @@ class ShopPage extends React.Component<ShopPageProps> {
         <Route
           exact
           path={`${this.props.match.path}`}
-          component={CollectionPreviews}
+          render={props => (
+            <CollectionPreviewsWithSpinner
+              isLoading={this.state.loading}
+              {...props}
+            />
+          )}
         />
         <Route
           path={`${this.props.match.path}/:collectionId`}
-          component={CollectionPage}
+          render={props => (
+            <CollectionPageWithSPinner
+              isLoading={this.state.loading}
+              {...props}
+            />
+          )}
         />
-        >
       </div>
     );
   }
