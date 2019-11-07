@@ -1,24 +1,20 @@
 import React from "react";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
-import Header from "./layout/Header";
+import Header from "./components/header/Header";
 import LoginPage from "./pages/LoginPage";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import "./App.scss";
-import {
-  auth,
-  createUserProfileDocument,
-  addCollectionAndDocuments
-} from "./utils/firebase";
+import { auth, createUserProfileDocument } from "./utils/firebase";
 import { User } from "firebase";
 import { connect } from "react-redux";
-import { setCurrentUser, currentUser } from "./redux/actions/user/userActions";
+import { setCurrentUser, currentUser } from "./redux/user/userActions";
 import { Dispatch } from "redux";
 import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "./redux/actions/user/userSelectors";
+import { selectCurrentUser } from "./redux/user/userSelectors";
 import CheckoutPage from "./pages/CheckoutPage";
-import { selectCollectionsForPreview } from "./redux/actions/shop/shopSelectors";
+import { selectCollectionsForPreview } from "./redux/shop/shopSelectors";
 
 interface AppProps {
   setCurrentUser: typeof setCurrentUser;

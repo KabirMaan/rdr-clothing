@@ -20,6 +20,6 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "src", ".storybook/decorators.stories.tsx"
   ]
 }

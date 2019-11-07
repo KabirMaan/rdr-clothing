@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginPage.scss";
-import SignIn from "../../components/SignIn";
-import SignUp from "../../components/SignUp";
+import SignIn from "../../components/loginPage/SignIn";
+import SignUp from "../../components/loginPage/SignUp";
 
 const LoginPage: React.FC = (): JSX.Element => {
   return (

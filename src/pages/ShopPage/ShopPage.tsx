@@ -4,10 +4,10 @@ import "./ShopPage.scss";
 
 import { RouteComponentProps, Route } from "react-router-dom";
 
-import { fetchCollectionsStart } from "../../redux/actions/shop/shopActions";
+import { fetchCollectionsStart } from "../../redux/shop/shopActions";
 import { connect } from "react-redux";
 
-import CollectionPreviewsContainer from "../../components/CollectionPreviewsContainer";
+import CollectionPreviewsContainer from "../../components/shopPage/CollectionPreviewsContainer";
 import CollectionPageContainer from "../CollectionPage/CollectionPageContainer";
 
 interface ShopPageProps extends RouteComponentProps {
