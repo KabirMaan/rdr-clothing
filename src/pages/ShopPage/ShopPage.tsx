@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 //import CategoryPreviews from "../../components/CategoryPreviews";
 import "./ShopPage.scss";
 
@@ -9,39 +9,37 @@ import { connect } from "react-redux";
 
 import CollectionPreviewsContainer from "../../components/shopPage/CollectionPreviewsContainer";
 import CollectionPageContainer from "../CollectionPage/CollectionPageContainer";
+import { Dispatch } from "redux";
 
 interface ShopPageProps extends RouteComponentProps {
-  updateCollections: any;
-  fetchCollectionsStart: any;
+  fetchCollectionsStart: typeof fetchCollectionsStart;
 }
 
-class ShopPage extends React.Component<ShopPageProps> {
-  componentDidMount() {
-    const { fetchCollectionsStart } = this.props;
-
+const ShopPage: React.FC<ShopPageProps> = ({
+  fetchCollectionsStart,
+  match
+}): JSX.Element => {
+  useEffect(() => {
     fetchCollectionsStart();
-  }
-  render() {
-    return (
-      <div>
-        <Route
-          exact
-          path={`${this.props.match.path}`}
-          component={CollectionPreviewsContainer}
-        />
-        <Route
-          path={`${this.props.match.path}/:collectionId`}
-          component={CollectionPageContainer}
-        />
-      </div>
-    );
-  }
-}
-const mapDispatchToProps = (dispatch: any) => ({
+  }, [fetchCollectionsStart]);
+
+  return (
+    <div>
+      <Route
+        exact
+        path={`${match.path}`}
+        component={CollectionPreviewsContainer}
+      />
+      <Route
+        path={`${match.path}/:collectionId`}
+        component={CollectionPageContainer}
+      />
+    </div>
+  );
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(ShopPage);
+export default connect(null, mapDispatchToProps)(ShopPage);
