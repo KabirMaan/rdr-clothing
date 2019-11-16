@@ -1,22 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../../assets/crown.svg";
-
 import "./Header.scss";
-
 import CartIcon from "../CartIcon";
 import CartPreview from "../CartPreview";
 import { connect } from "react-redux";
-
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../../../redux/user/userSelectors";
 import { selectCartHidden } from "../../../redux/cart/cartSelectors";
 import { currentUser, signOutStart } from "../../../redux/user/userActions";
+import { Dispatch } from "redux";
 
 interface HeaderProps {
   currentUser: currentUser | null;
   hidden: boolean;
-  signOutStart: any;
+  signOutStart: typeof signOutStart;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -24,7 +22,6 @@ const Header: React.FC<HeaderProps> = ({
   hidden,
   signOutStart
 }): JSX.Element => {
-  console.log(hidden);
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -58,7 +55,7 @@ const mapStateToProps = createStructuredSelector({
   hidden: selectCartHidden
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   signOutStart: () => dispatch(signOutStart())
 });
 

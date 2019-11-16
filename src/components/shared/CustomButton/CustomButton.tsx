@@ -13,7 +13,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   isGoogleSignIn,
   invertedColors,
   ...otherProps
-}) => (
+}): JSX.Element => (
   <button
     {...otherProps}
     className={classNames({

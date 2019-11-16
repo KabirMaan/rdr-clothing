@@ -6,7 +6,10 @@ import {
   signOutSuccess,
   signOutFailure,
   signUpSuccess,
-  signUpFailure
+  signUpFailure,
+  EmailSignInStartAction,
+  SignUpStartAction,
+  SignUpSucessAction
 } from "./userActions";
 import {
   auth,
@@ -14,9 +17,13 @@ import {
   createUserProfileDocument,
   getCurrentUser
 } from "../../utils/firebase";
-import UserActionTypes from "./userTypes";
+import { UserActionTypes } from "./userTypes";
+import { User } from "firebase";
 
-export function* getSnapshotFromUserAuth(userAuth: any, additionalData?: any) {
+export function* getSnapshotFromUserAuth(
+  userAuth: User,
+  additionalData?: { displayName?: string }
+) {
   try {
     const userRef = yield call(
       createUserProfileDocument,
@@ -39,11 +46,15 @@ export function* signInWithGoogle() {
   }
 }
 
-export function* signInWithEmail({ payload: { email, password } }: any) {
+export function* signInWithEmail(action: EmailSignInStartAction) {
+  console.log(action);
+  const { email, password } = action.payload;
+  console.log(typeof email);
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
+    console.log(error);
     yield put(signInFailure(error));
   }
 }
@@ -67,7 +78,9 @@ export function* signOut() {
   }
 }
 
-export function* signUp({ payload: { email, password, displayName } }: any) {
+export function* signUp(action: SignUpStartAction) {
+  const { email, password, displayName } = action.payload;
+  console.log(typeof email);
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     yield put(signUpSuccess({ user, additionalData: { displayName } }));
@@ -76,7 +89,9 @@ export function* signUp({ payload: { email, password, displayName } }: any) {
   }
 }
 
-export function* signInAfterSignUp({ payload: { user, additionalData } }: any) {
+export function* signInAfterSignUp(action: SignUpSucessAction) {
+  console.log(action);
+  const { user, additionalData } = action.payload;
   yield getSnapshotFromUserAuth(user, additionalData);
 }
 

@@ -3,7 +3,7 @@ import "./FormInput.scss";
 
 interface FormInputProps {
   label?: string;
-  handleChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   name: string;
   type: string;
@@ -15,7 +15,7 @@ const FormInput: React.FC<FormInputProps> = ({
   value,
   required,
   name
-}) => {
+}) : JSX.Element => {
   return (
     <div className="form-input">
       <input

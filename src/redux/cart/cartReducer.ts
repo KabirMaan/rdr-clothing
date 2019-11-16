@@ -1,5 +1,5 @@
-import CartActionTypes from "./cartTypes";
-import { cartItem } from "./cartActions";
+import { CartActionTypes, CartAction } from "./cartTypes";
+import { CartItem } from "./cartActions";
 import { addItemToCart, removeItemFromCart } from "./cartUtils";
 
 const INITIAL_STATE = {
@@ -8,9 +8,9 @@ const INITIAL_STATE = {
 };
 interface CartState {
   hidden: boolean;
-  cartItems: cartItem[];
+  cartItems: CartItem[];
 }
-const cartReducer = (state: CartState = INITIAL_STATE, action: any) => {
+const cartReducer = (state: CartState = INITIAL_STATE, action: CartAction) => {
   switch (action.type) {
     case CartActionTypes.TOGGLE_CART_HIDDEN:
       return {

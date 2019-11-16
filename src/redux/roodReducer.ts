@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { currentUser } from "./user/userActions";
-import { cartItem } from "./cart/cartActions";
+import { CartItem } from "./cart/cartActions";
 import userReducer from "./user/userReducer";
 import cartReducer from "./cart/cartReducer";
 import directoryReducer from "./directory/directoryReducer";
@@ -14,7 +14,7 @@ export interface StoreState {
   };
   cart: {
     hidden: boolean;
-    cartItems: cartItem[];
+    cartItems: CartItem[];
   };
   directory: any;
   shop: any;

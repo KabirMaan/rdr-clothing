@@ -2,7 +2,7 @@ import React from "react";
 import "./ProductPreview.scss";
 import CustomButton from "../CustomButton";
 import { Dispatch } from "redux";
-import { addItem } from "../../../redux/cart/cartActions";
+import { addItem, CartItem } from "../../../redux/cart/cartActions";
 import { connect } from "react-redux";
 
 interface ProductPreviewProps {
@@ -41,7 +41,7 @@ const ProductPreview: React.FC<ProductPreviewProps> = ({
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  addItem: (item: any) => dispatch(addItem(item))
+  addItem: (item: CartItem) => dispatch(addItem(item))
 });
 export default connect(
   null,

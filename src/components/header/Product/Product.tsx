@@ -1,12 +1,12 @@
 import React from "react";
 import "./Product.scss";
-import { cartItem } from "../../../redux/cart/cartActions";
+import { CartItem } from "../../../redux/cart/cartActions";
 
 interface ProductProps {
-  item: cartItem;
+  item: CartItem;
 }
 
-const Product: React.FC<ProductProps> = ({ item }) => {
+const Product: React.FC<ProductProps> = ({ item }): JSX.Element => {
   return (
     <div className="product">
       <img src={item.imageUrl} alt="item" />

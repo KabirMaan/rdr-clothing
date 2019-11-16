@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import MenuItem from "../MenuItem";
 import "./Directory.scss";
 import { withRouter, RouteComponentProps } from "react-router";
@@ -15,30 +15,29 @@ interface DirectoryProps extends RouteComponentProps {
     size: string;
   }[];
 }
-interface DirectoryState {}
-//make functional component
-class Directory extends Component<DirectoryProps, DirectoryState> {
-  onMenuItemClick = (linkUrl: string): void => {
-    this.props.history.push(`${this.props.match.url}${linkUrl}`);
+
+const Directory: React.FC<DirectoryProps> = ({ history, match, sections }) => {
+  const onMenuItemClick = (linkUrl: string): void => {
+    history.push(`${match.url}${linkUrl}`);
   };
-  render() {
-    return (
-      <div className="directory">
-        {this.props.sections.map(({ title, imageUrl, id, size, linkUrl }) => {
-          return (
-            <MenuItem
-              key={id}
-              imageUrl={imageUrl}
-              menuTitle={title}
-              size={size}
-              onMenuItemClick={() => this.onMenuItemClick(linkUrl)}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+
+  return (
+    <div className="directory">
+      {sections.map(({ title, imageUrl, id, size, linkUrl }) => {
+        return (
+          <MenuItem
+            key={id}
+            imageUrl={imageUrl}
+            menuTitle={title}
+            size={size}
+            onMenuItemClick={() => onMenuItemClick(linkUrl)}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
 const mapStateToProps = createStructuredSelector({
   sections: selectDirectorySections
 });

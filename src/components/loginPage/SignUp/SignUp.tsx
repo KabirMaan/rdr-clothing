@@ -1,15 +1,12 @@
 import React from "react";
-
 import FormInput from "../../shared/FormInput";
 import CustomButton from "../../shared/CustomButton";
-
 import "./SignUp.scss";
-
 import { signUpStart } from "../../../redux/user/userActions";
 import { connect } from "react-redux";
 
 interface SignUpProps {
-  signUpStart: any;
+  signUpStart: typeof signUpStart;
 }
 
 interface SignUpState {
@@ -21,9 +18,10 @@ interface SignUpState {
 
 class SignUp extends React.Component<SignUpProps, SignUpState> {
   state = { displayName: "", email: "", password: "", confirmPassword: "" };
-  _isMounted!: boolean;
 
-  handleSubmit = async (event: any) => {
+  handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     event.preventDefault();
     const { signUpStart } = this.props;
     const { displayName, email, password, confirmPassword } = this.state;
@@ -36,7 +34,7 @@ class SignUp extends React.Component<SignUpProps, SignUpState> {
     signUpStart({ displayName, email, password });
   };
 
-  handleChange = (event: any) => {
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
     const newState = { [name]: value } as Pick<SignUpState, keyof SignUpState>;
     this.setState(newState);

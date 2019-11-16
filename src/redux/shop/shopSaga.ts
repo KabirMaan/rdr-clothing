@@ -7,7 +7,7 @@ import {
   fetchCollectionsSuccess,
   fetchCollectionsFailure
 } from "./shopActions";
-import ShopActionTypes from "./shopTypes";
+import { ShopActionTypes } from "./shopTypes";
 
 export function* fetchCollections() {
   try {

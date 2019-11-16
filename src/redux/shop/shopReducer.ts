@@ -1,10 +1,10 @@
-import ShopActionTypes from "./shopTypes";
+import { ShopActionTypes, ShopAction } from "./shopTypes";
 
 const INITIAL_STATE = {
   collections: null
 };
 
-const shopReducer = (state = INITIAL_STATE, action: any) => {
+const shopReducer = (state = INITIAL_STATE, action: ShopAction) => {
   switch (action.type) {
     case ShopActionTypes.FETCH_COLLECTIONS_START:
       return {
@@ -12,6 +12,7 @@ const shopReducer = (state = INITIAL_STATE, action: any) => {
         isFetching: true
       };
     case ShopActionTypes.FETCH_COLLECTIONS_SUCCESS:
+      console.log(action.payload);
       return {
         ...state,
         isFetching: false,

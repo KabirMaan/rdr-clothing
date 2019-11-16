@@ -3,32 +3,27 @@ import CustomButton from "../../shared/CustomButton";
 import "./CartPreview.scss";
 import { connect } from "react-redux";
 import Product from "../Product";
-import {
-  cartItem,
-  toggleCartHidden
-} from "../../../redux/cart/cartActions";
+import { CartItem, toggleCartHidden } from "../../../redux/cart/cartActions";
 import { createStructuredSelector } from "reselect";
 import { selectCartItems } from "../../../redux/cart/cartSelectors";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import { Dispatch } from "redux";
 
 interface CartPreviewProps extends RouteComponentProps {
-  cartItems: cartItem[];
+  cartItems: CartItem[];
+  dispatch: Dispatch;
 }
 
 const CartPreview: React.FC<CartPreviewProps> = ({
   cartItems,
   history,
   dispatch
-}: any): JSX.Element => {
-  console.log(cartItems);
+}): JSX.Element => {
   return (
     <div className="cart-preview">
       <div className="cart-items">
-        {/* {cartItems.map((cartItem: any) => (
-          <Product key={cartItem.id} item={cartItem}></Product>
-        ))} */}
         {cartItems.length ? (
-          cartItems.map((cartItem: any) => (
+          cartItems.map((cartItem: CartItem) => (
             <Product key={cartItem.id} item={cartItem} />
           ))
         ) : (

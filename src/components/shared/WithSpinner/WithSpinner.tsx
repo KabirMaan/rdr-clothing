@@ -1,9 +1,14 @@
 import React from "react";
 
 import "./WithSpinner.scss";
+interface SpinnerProps {
+  isLoading: boolean;
+}
 
-const WithSpinner = (WrappedComponent: any) => {
-  const Spinner = ({ isLoading, ...otherProps }: any) => {
+interface WithSpinnerProps {}
+
+const WithSpinner = (WrappedComponent: React.ComponentType) => {
+  const Spinner: React.FC<SpinnerProps> = ({ isLoading, ...otherProps }) => {
     return isLoading ? (
       <div className="spinner">
         <div className="spinner__container" />
