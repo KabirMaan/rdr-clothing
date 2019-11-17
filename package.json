@@ -1,64 +1,20 @@
 {
-  "name": "ecommerce-react-typescript",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "24.0.18",
-    "@types/node": "12.7.12",
-    "@types/react": "16.9.5",
-    "@types/react-dom": "16.9.1",
-    "classnames": "^2.2.6",
-    "firebase": "^7.2.1",
-    "node-sass": "^4.12.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
-    "react-stripe-checkout": "^2.6.3",
-    "redux": "^4.0.4",
-    "redux-logger": "^3.0.6",
-    "redux-persist": "^6.0.0",
-    "redux-saga": "^1.1.1",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
-    "typescript": "3.6.4"
-  },
+  "name": "ecommerce-full-stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:KabirMaan/rdr-clothing.git",
+  "author": "Kabir Maan <kabirmaan9@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s ./public",
-    "build-storybook": "build-storybook -s public"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "client": "cd client && yarn start",
+    "server": "cd server && yarn start",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && tsc -p .",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "node dist/server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.2.3",
-    "@storybook/addon-info": "^5.2.3",
-    "@storybook/addon-links": "^5.2.3",
-    "@storybook/addons": "^5.2.3",
-    "@storybook/preset-scss": "^1.0.2",
-    "@storybook/react": "^5.2.3",
-    "@types/classnames": "^2.2.9",
-    "@types/react-redux": "^7.1.5",
-    "@types/react-router-dom": "^5.1.0",
-    "@types/redux-logger": "^3.0.7",
-    "awesome-typescript-loader": "^5.2.1",
-    "react-docgen-typescript-loader": "^3.3.0"
+    "concurrently": "^5.0.0"
   }
 }
