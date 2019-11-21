@@ -3,6 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import path from "path";
 import Stripe from "stripe";
+import compression from "compression";
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 console.log(process.env.STRIPE_SECRET_KEY);
@@ -11,6 +12,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
