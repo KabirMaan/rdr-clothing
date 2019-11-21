@@ -9,9 +9,10 @@ const StripeCheckoutButton: React.FC<StripeCheckoutButtonProps> = ({
   price
 }): JSX.Element => {
   const priceForStripe = price * 100;
-  const publishableKey = "pk_test_WBqax2FWVzS9QlpJScO07iuL";
+  const publishableKey = "pk_test_eMdo4vayAU2BRsyyNPDSfQCz";
 
   const onToken = (token: Token) => {
+    console.log(token);
     axios({
       url: "payment",
       method: "post",

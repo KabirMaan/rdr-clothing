@@ -5,7 +5,7 @@ import path from "path";
 import Stripe from "stripe";
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
-
+console.log(process.env.STRIPE_SECRET_KEY);
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
@@ -29,15 +29,17 @@ app.listen(port, () => {
 });
 
 app.post("/payment", (req, res) => {
-  console.log("payment");
-  console.log(req);
+  // console.log("payment");
+  // console.log("req", req);
   const body = {
     source: req.body.token.id,
     amount: req.body.amount,
-    currency: "gbp"
+    currency: "usd"
   };
 
-  stripe.charges.create(body, (stripeErr: Stripe, stripeRes: Stripe) => {
+  console.log(body);
+
+  stripe.charges.create(body, (stripeErr: any, stripeRes: any) => {
     if (stripeErr) {
       res.status(500).send({ error: stripeErr });
     } else {

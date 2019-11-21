@@ -4,9 +4,20 @@
   flex-direction: column;
   margin-bottom: 30px;
 
+  @media screen and (max-width: 800px) {
+    align-items: center;
+  }
+
   &__items {
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 800px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 15px;
+      row-gap: 30px;
+    }
   }
 
   &__title {
