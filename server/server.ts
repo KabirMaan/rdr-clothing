@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import path from "path";
 import Stripe from "stripe";
 import compression from "compression";
+import enforce from "express-sslify";
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 console.log(process.env.STRIPE_SECRET_KEY);
@@ -15,10 +16,10 @@ const port = process.env.PORT || 5000;
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cors());
-
 if (process.env.NODE_ENV === "production") {
+  app.use(compression());
   app.use(express.static(path.join(__dirname, "client/build")));
 
   app.get("*", function(req, res) {
@@ -28,6 +29,10 @@ if (process.env.NODE_ENV === "production") {
 
 app.listen(port, () => {
   console.log("Server running on port " + port);
+});
+
+app.get("/service-worker.js", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "..", "build", "service-worker.js"));
 });
 
 app.post("/payment", (req, res) => {
