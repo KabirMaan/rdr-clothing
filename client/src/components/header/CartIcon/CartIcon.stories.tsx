@@ -5,4 +5,4 @@ import { CenterDecorator } from "../../../../.storybook/decorators.stories";
 
 storiesOf("Cart Icon", module)
   .addDecorator(CenterDecorator)
-  .add("default", () => <CartIcon />);
+  .add("default", () => <CartIcon toggleCartHidden={() => {}} />);

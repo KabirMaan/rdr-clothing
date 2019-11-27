@@ -7,7 +7,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCartItems } from "../../../redux/cart/cartSelectors";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { Dispatch } from "redux";
-import CartPreview from "../CartPreview";
+import CartPreview from "./CartPreview";
 
 export interface CartPreviewContainerProps extends RouteComponentProps {
   cartItems: CartItem[];

@@ -1,12 +1,8 @@
 import React from "react";
 import MenuItem from "../MenuItem";
 import "./Directory.scss";
-import { withRouter, RouteComponentProps } from "react-router";
-import { createStructuredSelector } from "reselect";
-import { selectDirectorySections } from "../../../redux/directory/directorySelectors";
-import { connect } from "react-redux";
 
-interface DirectoryProps extends RouteComponentProps {
+interface DirectoryProps {
   sections: {
     title: string;
     imageUrl: string;
@@ -14,13 +10,10 @@ interface DirectoryProps extends RouteComponentProps {
     linkUrl: string;
     size: string;
   }[];
+  onMenuItemClick: (linkUrl: string) => void;
 }
 
-const Directory: React.FC<DirectoryProps> = ({ history, match, sections }) => {
-  const onMenuItemClick = (linkUrl: string): void => {
-    history.push(`${match.url}${linkUrl}`);
-  };
-
+const Directory: React.FC<DirectoryProps> = ({ onMenuItemClick, sections }) => {
   return (
     <div className="directory">
       {sections.map(({ title, imageUrl, id, size, linkUrl }) => {
@@ -38,8 +31,4 @@ const Directory: React.FC<DirectoryProps> = ({ history, match, sections }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  sections: selectDirectorySections
-});
-
-export default withRouter(connect(mapStateToProps)(Directory));
+export default Directory;

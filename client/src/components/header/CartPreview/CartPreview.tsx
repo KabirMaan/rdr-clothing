@@ -21,7 +21,7 @@ export const CartPreview: React.FC<CartPreviewProps> = ({
             <Product key={cartItem.id} item={cartItem} />
           ))
         ) : (
-          <span  className="cart-items__empty">Your cart is empty</span>
+          <span className="cart-items__empty">Your cart is empty</span>
         )}
       </div>
       <CustomButton onClick={onCheckoutButtonClick}>

@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow, ShallowWrapper } from "enzyme";
 import CartIcon from "./CartIcon";
-import { ToggleCartHiddenAction } from "../../../redux/cart/cartActions";
 
 describe("CartIcon component", () => {
   let wrapper: ShallowWrapper;

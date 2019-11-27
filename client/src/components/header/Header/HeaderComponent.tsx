@@ -2,22 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../../assets/crown.svg";
 import "./Header.scss";
-import CartIcon from "../CartIcon";
-import { currentUser, signOutStart } from "../../../redux/user/userActions";
-import CartPreviewContainer from "../CartPreviewContainer";
-import CartIconContainer from "../CartIconContainer";
 
-interface HeaderProps {
+import { currentUser, signOutStart } from "../../../redux/user/userActions";
+import CartPreview from "../CartPreview";
+import CartIcon from "../CartIcon";
+
+interface HeaderComponentProps {
   currentUser: currentUser | null;
   hidden: boolean;
-  signOutStart: typeof signOutStart;
+  signOutStart: any;
 }
 
-const Header: React.FC<HeaderProps> = ({
+const HeaderComponent: React.FC<HeaderComponentProps> = ({
   currentUser,
   hidden,
   signOutStart
 }): JSX.Element => {
+  console.log(currentUser);
+  console.log(hidden);
+  console.log(signOutStart);
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -39,11 +42,11 @@ const Header: React.FC<HeaderProps> = ({
             SIGN IN
           </Link>
         )}
-        <CartIconContainer />
+        <CartIcon />
       </div>
-      {!hidden ? <CartPreviewContainer /> : null}
+      {!hidden ? <CartPreview /> : null}
     </div>
   );
 };
 
-export default Header;
+export default HeaderComponent;

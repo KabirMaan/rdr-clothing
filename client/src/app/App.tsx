@@ -1,7 +1,7 @@
 import React, { useEffect, lazy, Suspense } from "react";
 // import HomePage from "./pages/HomePage";
 // import ShopPage from "./pages/ShopPage";
-import Header from "../components/header/Header";
+
 // import LoginPage from "./pages/LoginPage";
 import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.scss";
@@ -13,7 +13,8 @@ import { selectCurrentUser } from "../redux/user/userSelectors";
 import { Dispatch } from "redux";
 import Spinner from "../components/shared/Spinner";
 import ErrorPage from "../pages/ErrorPage";
-import HeaderContainer from "../components/header/HeaderContainer";
+import Header from "../components/header/Header";
+
 
 const HomePage = lazy(() => import("../pages/HomePage"));
 const ShopPage = lazy(() => import("../pages/ShopPage"));
@@ -34,7 +35,7 @@ const App: React.FC<AppProps> = ({ currentUser, checkUserSession }) => {
 
   return (
     <div className="App">
-      <HeaderContainer />
+      <Header />
       <Switch>
         <ErrorPage>
           <Suspense fallback={<Spinner />}>

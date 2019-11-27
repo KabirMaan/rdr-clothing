@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow, ShallowWrapper } from "enzyme";
-import Header from "./Header";
-import CartPreviewContainer from "../CartPreviewContainer";
+import Header from "./HeaderComponent";
+import CartPreview from "../CartPreview";
 
 describe("Header component", () => {
   let wrapper: ShallowWrapper;
@@ -72,7 +72,7 @@ describe("Header component", () => {
 
   describe("if hidden is true", () => {
     it("should not render CartDropdown", () => {
-      expect(wrapper.exists(CartPreviewContainer)).toBe(false);
+      expect(wrapper.exists(CartPreview)).toBe(false);
     });
   });
 
@@ -86,7 +86,7 @@ describe("Header component", () => {
 
       const newWrapper = shallow(<Header {...mockProps} />);
 
-      expect(newWrapper.exists(CartPreviewContainer)).toBe(true);
+      expect(newWrapper.exists(CartPreview)).toBe(true);
     });
   });
 });
