@@ -20,4 +20,4 @@ const Product: React.FC<ProductProps> = ({ item }): JSX.Element => {
   );
 };
 
-export default Product;
+export default React.memo(Product);
