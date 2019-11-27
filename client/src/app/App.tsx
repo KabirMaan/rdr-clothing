@@ -1,23 +1,24 @@
 import React, { useEffect, lazy, Suspense } from "react";
 // import HomePage from "./pages/HomePage";
 // import ShopPage from "./pages/ShopPage";
-import Header from "./components/header/Header";
+import Header from "../components/header/Header";
 // import LoginPage from "./pages/LoginPage";
 import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.scss";
 import { connect } from "react-redux";
-import { currentUser, checkUserSession } from "./redux/user/userActions";
+import { currentUser, checkUserSession } from "../redux/user/userActions";
 import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "./redux/user/userSelectors";
+import { selectCurrentUser } from "../redux/user/userSelectors";
 // import CheckoutPage from "./pages/CheckoutPage";
 import { Dispatch } from "redux";
-import Spinner from "./components/shared/Spinner";
-import ErrorPage from "./pages/ErrorPage";
+import Spinner from "../components/shared/Spinner";
+import ErrorPage from "../pages/ErrorPage";
+import HeaderContainer from "../components/header/HeaderContainer";
 
-const HomePage = lazy(() => import("./pages/HomePage"));
-const ShopPage = lazy(() => import("./pages/ShopPage"));
-const LoginPage = lazy(() => import("./pages/LoginPage"));
-const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
+const HomePage = lazy(() => import("../pages/HomePage"));
+const ShopPage = lazy(() => import("../pages/ShopPage"));
+const LoginPage = lazy(() => import("../pages/LoginPage"));
+const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
 
 interface AppProps {
   // setCurrentUser: typeof setCurrentUser;
@@ -33,7 +34,7 @@ const App: React.FC<AppProps> = ({ currentUser, checkUserSession }) => {
 
   return (
     <div className="App">
-      <Header />
+      <HeaderContainer />
       <Switch>
         <ErrorPage>
           <Suspense fallback={<Spinner />}>

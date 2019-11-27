@@ -1,23 +1,17 @@
 import React from "react";
 import CustomButton from "../../shared/CustomButton";
 import "./CartPreview.scss";
-import { connect } from "react-redux";
 import Product from "../Product";
-import { CartItem, toggleCartHidden } from "../../../redux/cart/cartActions";
-import { createStructuredSelector } from "reselect";
-import { selectCartItems } from "../../../redux/cart/cartSelectors";
-import { withRouter, RouteComponentProps } from "react-router-dom";
-import { Dispatch } from "redux";
+import { CartItem } from "../../../redux/cart/cartActions";
 
-interface CartPreviewProps extends RouteComponentProps {
+export interface CartPreviewProps {
   cartItems: CartItem[];
-  dispatch: Dispatch;
+  onCheckoutButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const CartPreview: React.FC<CartPreviewProps> = ({
+export const CartPreview: React.FC<CartPreviewProps> = ({
   cartItems,
-  history,
-  dispatch
+  onCheckoutButtonClick
 }): JSX.Element => {
   return (
     <div className="cart-preview">
@@ -27,22 +21,14 @@ const CartPreview: React.FC<CartPreviewProps> = ({
             <Product key={cartItem.id} item={cartItem} />
           ))
         ) : (
-          <span className="cart-items__empty">Your cart is empty</span>
+          <span  className="cart-items__empty">Your cart is empty</span>
         )}
       </div>
-      <CustomButton
-        onClick={() => {
-          history.push("/checkout");
-          dispatch(toggleCartHidden());
-        }}
-      >
+      <CustomButton onClick={onCheckoutButtonClick}>
         GO TO CHECKOUT
       </CustomButton>
     </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems
-});
-export default withRouter(connect(mapStateToProps)(CartPreview));
+export default CartPreview;

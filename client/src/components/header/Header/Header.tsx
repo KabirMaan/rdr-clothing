@@ -3,13 +3,9 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../../assets/crown.svg";
 import "./Header.scss";
 import CartIcon from "../CartIcon";
-import CartPreview from "../CartPreview";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "../../../redux/user/userSelectors";
-import { selectCartHidden } from "../../../redux/cart/cartSelectors";
 import { currentUser, signOutStart } from "../../../redux/user/userActions";
-import { Dispatch } from "redux";
+import CartPreviewContainer from "../CartPreviewContainer";
+import CartIconContainer from "../CartIconContainer";
 
 interface HeaderProps {
   currentUser: currentUser | null;
@@ -43,23 +39,11 @@ const Header: React.FC<HeaderProps> = ({
             SIGN IN
           </Link>
         )}
-        <CartIcon />
+        <CartIconContainer />
       </div>
-      {!hidden ? <CartPreview /> : null}
+      {!hidden ? <CartPreviewContainer /> : null}
     </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  hidden: selectCartHidden
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  signOutStart: () => dispatch(signOutStart())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header);
+export default Header;

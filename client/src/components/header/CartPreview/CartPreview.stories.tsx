@@ -5,4 +5,6 @@ import { CenterDecorator } from "../../../../.storybook/decorators.stories";
 
 storiesOf("Cart Preview", module)
   .addDecorator(CenterDecorator)
-  .add("default", () => <CartPreview />);
+  .add("default", () => (
+    <CartPreview cartItems={[]} onCheckoutButtonClick={() => {}} />
+  ));
