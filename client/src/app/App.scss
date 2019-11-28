@@ -1,5 +1,8 @@
 body {
+  margin: 0;
   font-family: "Open Sans Condensed";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   padding: 20px 60px;
 
   @media screen and (max-width: 800px) {
@@ -14,4 +17,8 @@ a {
 
 * {
   box-sizing: border-box;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
