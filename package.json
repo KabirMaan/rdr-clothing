@@ -2,6 +2,10 @@
   "name": "ecommerce-full-stack",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "12.7.0",
+    "npm": "6.11.3"
+  },
   "repository": "git@github.com:KabirMaan/rdr-clothing.git",
   "author": "Kabir Maan <kabirmaan9@gmail.com>",
   "license": "MIT",
