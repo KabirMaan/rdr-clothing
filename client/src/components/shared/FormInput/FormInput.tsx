@@ -26,7 +26,7 @@ const FormInput: React.FC<FormInputProps> = ({
         value={value}
       />
       {label && (
-        <label className={`${value.length ? "shrink" : ""} form-input__label`}>
+        <label id="form-input__label" className={`${value.length ? "shrink" : ""} form-input__label`}>
           {label}
         </label>
       )}

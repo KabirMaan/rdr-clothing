@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../../assets/crown.svg";
 import "./Header.scss";
 
-import { currentUser, signOutStart } from "../../../redux/user/userActions";
+import { currentUser } from "../../../redux/user/userActions";
 import CartPreview from "../CartPreview";
 import CartIcon from "../CartIcon";
 
@@ -38,10 +38,10 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
             SIGN OUT
           </div>
         ) : (
-          <Link className="option" to="/login">
-            SIGN IN
+            <Link className="option" to="/login">
+              SIGN IN
           </Link>
-        )}
+          )}
         <CartIcon />
       </div>
       {!hidden ? <CartPreview /> : null}

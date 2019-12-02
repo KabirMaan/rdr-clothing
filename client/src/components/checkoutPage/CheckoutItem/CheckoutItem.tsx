@@ -1,26 +1,22 @@
 import React from "react";
 import {
-  clearItemFromCart,
-  removeItem,
-  addItem,
   CartItem
 } from "../../../redux/cart/cartActions";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
+
 import "./CheckoutItem.scss";
 
 interface CheckoutItemProps {
   cartItem: CartItem;
-  clearItemFromCart: typeof clearItemFromCart;
-  addItem: typeof addItem;
-  removeItem: typeof removeItem;
+  onClearItemClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onAddItemClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onRemoveItemClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const CheckoutItem: React.FC<CheckoutItemProps> = ({
   cartItem,
-  clearItemFromCart,
-  addItem,
-  removeItem
+  onClearItemClick,
+  onAddItemClick,
+  onRemoveItemClick
 }): JSX.Element => {
   const { name, imageUrl, price, quantity } = cartItem;
   return (
@@ -30,18 +26,18 @@ const CheckoutItem: React.FC<CheckoutItemProps> = ({
       </div>
       <span className="name">{name}</span>
       <span className="quantity">
-        <div className="arrow" onClick={() => removeItem(cartItem)}>
+        <div className="arrow" onClick={onRemoveItemClick}>
           &#10094;
         </div>
         <span className="value">{quantity}</span>
-        <div className="arrow" onClick={() => addItem(cartItem)}>
+        <div className="arrow" onClick={onAddItemClick}>
           &#10095;
         </div>
       </span>
       <span className="price">{price}</span>
       <div
         className="remove-button"
-        onClick={() => clearItemFromCart(cartItem)}
+        onClick={onClearItemClick}
       >
         &#10005;
       </div>
@@ -49,10 +45,5 @@ const CheckoutItem: React.FC<CheckoutItemProps> = ({
   );
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  clearItemFromCart: (item: CartItem) => dispatch(clearItemFromCart(item)),
-  addItem: (item: CartItem) => dispatch(addItem(item)),
-  removeItem: (item: CartItem) => dispatch(removeItem(item))
-});
 
-export default connect(null, mapDispatchToProps)(CheckoutItem);
+export default CheckoutItem

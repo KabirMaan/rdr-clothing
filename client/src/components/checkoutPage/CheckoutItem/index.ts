@@ -1,1 +1,1 @@
-export { default } from "./CheckoutItem";
+export { default } from "./CheckoutItemContainer";
