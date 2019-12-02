@@ -12,7 +12,9 @@
     "build:server": "cd server && tsc -p .",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node dist/server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "client-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "server-postbuild": "cd server && npm install && npm run build:server",
+    "heroku-postbuild": "npm client-postbuild && npm server-postbuild"
   },
   "devDependencies": {
     "concurrently": "^5.0.0"

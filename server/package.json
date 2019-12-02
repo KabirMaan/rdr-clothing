@@ -11,11 +11,11 @@
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon src/server.ts",
-    "build": "cd client && npm run build",
+   
     "build:server": "tsc -p ./src",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "ts-node server.ts",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "ts-node server.ts"
+  
   },
   "dependencies": {
     "body-parser": "^1.19.0",
