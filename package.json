@@ -9,9 +9,8 @@
     "client": "cd client && yarn start",
     "server": "cd server && yarn start",
     "build:client": "cd client && npm run build",
-    "build:server": "cd server && tsc -p .",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node dist/server.js",
+    "start": "cd server node dist/server.js",
     "client-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "server-postbuild": "cd server && npm install && npm run build:server",
     "heroku-postbuild": "npm client-postbuild && npm server-postbuild"
