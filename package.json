@@ -13,7 +13,7 @@
     "client": "cd client && yarn start",
     "server": "cd server ts-node server.ts",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server/dist/server.js",
+    "start": "node server.js",
     "build:client": "cd client && npm run build",
     "build:server": "tsc -p  .",
     "heroku-postbuild": "npm run build:server && cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
