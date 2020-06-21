@@ -37,7 +37,7 @@ STRIPE_SECRET_KEY=INSERT_KEY_HERE
 
 <h3>How to use it</h3>
 
-Register with any email or use a Google Account to login.
+Register or use (email: test@user.com, password: testing) to login.
 Create Your profile by filling in the required fields.
 
 <img src="https://github.com/KabirMaan/rdr-clothing/blob/master/readme-images/signin.jpg" width="1100" title="Sign In">
